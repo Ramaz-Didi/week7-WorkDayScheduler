@@ -11,7 +11,7 @@ setInterval(
 })
 var timeNow=parseInt(moment().format("H"));
 // used to check if js response to time change 
-//  timeNow=timeNow-11;
+// timeNow=timeNow-8;
 // console.log(timeNow)
 
 // 
@@ -21,9 +21,9 @@ for (let i = 0; i < businessHours.length; i++)
     const element = businessHours[i];
     var textByTimeSlot = document.getElementById(element);
     var timeSlotData=textByTimeSlot.dataset.time
-    // console.log(textByTimeSlot);
-    // console.log(timeNow);
-    // console.log("slot name"+timeSlotData);
+    
+    if (localStorage.getItem(businessHours[i]) || null)
+        {textByTimeSlot.textContent=localStorage.getItem(businessHours[i])}
     if (hoursNumbers[i] < timeNow)
     {
         textByTimeSlot.setAttribute("class","past"); 
@@ -39,21 +39,12 @@ for (let i = 0; i < businessHours.length; i++)
 // $("textarea").attr("class","future")
 // or $("textarea").addClass("future")
 $(".Btn").on("click", function(event){
-    event.preventDefault();
-    console.log($(event.target).siblings("textarea").val())
-
-    // var buttonNumber=event.target.
-    // var valueEvent=localStorage.getItem("9am")
-    // console.log(valueEvent);
-    // localStorage.setItem("9am","skjjwdf")
-    // console.log("2")
-    // var calendarItem = event.target.parentElement.previousElementSibling.children[0].value;
-    // localStorage.setItem(event.target.attributes[0].value, calendarItem);
-    // $("#projectGrid").append(
-    //  `<div class="row">
-    //   <div class="col">
-    //     ${$("#nameOfProject").val()}
-    //   </div>
-    //  
-    // </div>`)
+     event.preventDefault();
+    
+     
+    console.log("text"+$(event.target).siblings("textarea").val());
+    console.log("button code"+$(event.target).attr('data-time'));
+    
+    localStorage.setItem($(event.target).attr('data-time'),$(event.target).siblings("textarea").val());
+  
 })
