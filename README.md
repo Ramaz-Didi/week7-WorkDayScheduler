@@ -9,4 +9,7 @@
 
 Repository
 https://github.com/Ramaz-Didi/week7-WorkDayScheduler/settings/pages
+
+and
+
 https://ramaz-didi.github.io/week7-WorkDayScheduler/
